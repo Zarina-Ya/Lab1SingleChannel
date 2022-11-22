@@ -15,9 +15,10 @@ namespace Lab1SingleChannel
         public Form1()
         {
             InitializeComponent();
-
+            double accuracy = 0.01;
+            int selection = (int)(9 / Math.Pow(4 * accuracy, 2));
             ALOHA aloha = new ALOHA(10,History, CountMess, NewChart);
-            aloha.StartGeneration(10000, 0.9);
+            aloha.StartGeneration(selection, 0.9);
         }
     }
 }
