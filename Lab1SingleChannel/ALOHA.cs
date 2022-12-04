@@ -83,7 +83,7 @@ namespace Lab1SingleChannel
             }
         }
 
-        public void StartGeneration( int countWin, double p = 0.5)
+        public void StartGeneration( int countWin, int indexSeries, double p = 0.5)
         {
             var l = 0.0;
 
@@ -100,20 +100,22 @@ namespace Lab1SingleChannel
                 }
 
                 SendRemainingMessages();
-                InitPlots(l);
+                InitPlots(l, indexSeries);
 
                 l += 0.1;
             }
         }
 
-        private void InitPlots(double l)
+        private void InitPlots(double l, int indexSeries)
         {
             var resHistory = 0.0;
             var resMessage = 0.0;
             
             var countOutput = 0.0;
 
-            MinMaxPlot(_newChart);
+            MinMaxPlotNewChart(_newChart);
+            MinMaxPlot(_countMessage);
+            MinMaxPlot(_history);
 
             foreach (var person in _persons)
             {
@@ -123,20 +125,55 @@ namespace Lab1SingleChannel
         
             }
            
-            _history.Series[0].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), resHistory/M);
-            _countMessage.Series[0].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), resMessage/M);
-            _newChart.Series[0].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), countOutput);
+            _history.Series[indexSeries].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), resHistory/M);
+            _countMessage.Series[indexSeries].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), resMessage/M);
+            _newChart.Series[indexSeries].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), countOutput);
+
+            _history.Series[indexSeries].LegendText = $"Count people {M}";
+            _countMessage.Series[indexSeries].LegendText = $"Count people {M}";
+            _newChart.Series[indexSeries].LegendText = $"Count people {M }";
         }
 
         private static void MinMaxPlot(Chart chart)
         {
             chart.ChartAreas[0].AxisX.Maximum = 1;
             chart.ChartAreas[0].AxisX.Minimum = 0;
+            chart.ChartAreas[0].AxisY.Minimum = 0;
+            chart.ChartAreas[0].AxisX.Interval = 0.05;
+           // chart.ChartAreas[0].AxisY.Interval = 2;
+
+            chart.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chart.ChartAreas[0].CursorY.IsUserEnabled = true;
+            chart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chart.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
+            chart.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+            chart.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+            chart.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
         }
 
+        private static void MinMaxPlotNewChart(Chart chart)
+        {
+            chart.ChartAreas[0].AxisX.Maximum = 1;
+            chart.ChartAreas[0].AxisX.Minimum = 0;
+            chart.ChartAreas[0].AxisY.Minimum = 0;
+            chart.ChartAreas[0].AxisX.Interval = 0.05;
+             chart.ChartAreas[0].AxisY.Interval = 0.1;
+            chart.ChartAreas[0].AxisY.ScaleView.MinSize = 0;
+            chart.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chart.ChartAreas[0].CursorY.IsUserEnabled = true;
+            chart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chart.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
+            chart.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+            chart.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+            chart.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
+
+            
+        }
         private bool CheckMessagePersons()
         {
-            var messgePersons = _persons.FindAll(s => s.CountQueue > 0);
+            var messgePersons = _persons.FindAll(s => s.CountQueue> 0);
             if(messgePersons.Count > 0)
                 return true;
             return false;
