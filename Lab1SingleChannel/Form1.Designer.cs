@@ -65,7 +65,7 @@
             this.History.TabIndex = 0;
             this.History.Text = "chart1";
             title1.Name = "Title1";
-            title1.Text = "History";
+            title1.Text = "Средняя задержка ";
             this.History.Titles.Add(title1);
             // 
             // CountMess
@@ -105,7 +105,7 @@
             this.NewChart.TabIndex = 2;
             this.NewChart.Text = "chart1";
             title3.Name = "Title1";
-            title3.Text = "History";
+            title3.Text = "Отношение интенсивности входного к выходному";
             this.NewChart.Titles.Add(title3);
             // 
             // Form1

@@ -112,7 +112,8 @@ namespace Lab1SingleChannel
             var resMessage = 0.0;
             
             var countOutput = 0.0;
-           
+
+            MinMaxPlot(_newChart);
 
             foreach (var person in _persons)
             {
@@ -125,6 +126,12 @@ namespace Lab1SingleChannel
             _history.Series[0].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), resHistory/M);
             _countMessage.Series[0].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), resMessage/M);
             _newChart.Series[0].Points.AddXY(Math.Round(l, 1, MidpointRounding.AwayFromZero), countOutput);
+        }
+
+        private static void MinMaxPlot(Chart chart)
+        {
+            chart.ChartAreas[0].AxisX.Maximum = 1;
+            chart.ChartAreas[0].AxisX.Minimum = 0;
         }
 
         private bool CheckMessagePersons()
