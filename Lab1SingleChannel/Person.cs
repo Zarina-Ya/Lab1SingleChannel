@@ -46,43 +46,23 @@ namespace Lab1SingleChannel
                 res += item;
             return res/_countMessageWin.Count;
         }
-        //public void UpdateProbability(Actiontype type)
-        //{
-        //    switch (type)
-        //    {
-        //        case Actiontype.Conflict:
-
-        //            _p = Math.Max(1 / M, _p / 2);
-        //            break;
-        //        case Actiontype.Empty:
-        //            _p = Math.Min(1, 2 * _p);
-        //            break;
-        //        case Actiontype.Success:
-        //            _p = _p;
-        //            break;
-
-        //    }
-        //}
-
         public void UpdateProbability(Actiontype type)
         {
-            if (_queueTime.Count > 0)
+            switch (type)
             {
-                switch (type)
-                {
-                    case Actiontype.Conflict:
-                        _p = Math.Max(1 / M, _p / 2);
-                        break;
-                    case Actiontype.Empty:
-                        _p = Math.Min(1, 2 * _p);
-                        break;
-                    case Actiontype.Success:
-                        _p = _p;
-                        break;
+                case Actiontype.Conflict:
+                     _p = Math.Max(1 / M, _p / 2);
+                    break;
+                case Actiontype.Empty:
+                    _p = Math.Min(1, 2 * _p);
+                    break;
+                case Actiontype.Success:
+                    _p = _p;
+                    break;
 
-                }
             }
         }
+        // влияние числа абонентов на характеристики системы 
         public void CheckMessageQueue()
             => _countMessageWin.Add(_queueTime.Count);
 
