@@ -20,7 +20,7 @@ namespace Lab1SingleChannel
         public PoissonRandom(double x, int seed)
         {
             L = Math.Exp(-x);
-            _rand = new Random(seed);
+            _rand = new Random(Guid.NewGuid().GetHashCode());
         }
 
         public double Next()
@@ -33,5 +33,7 @@ namespace Lab1SingleChannel
             } while (p > L);
             return k - 1;
         }
+
+        
     }
 }

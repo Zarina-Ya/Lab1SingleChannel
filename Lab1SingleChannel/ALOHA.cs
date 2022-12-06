@@ -25,6 +25,7 @@ namespace Lab1SingleChannel
             _history = history;
             _countMessage = countMessage;
             _newChart = newChart;
+           
         }
            
         private void CreatePerson(double l, double p)
@@ -33,7 +34,7 @@ namespace Lab1SingleChannel
 
             for (int i = 0; i < M; i++)
             {
-                _persons.Add(new Person(l, p, M, _random));
+                _persons.Add(new Person(l, M, _random, p));
             }
 
         }

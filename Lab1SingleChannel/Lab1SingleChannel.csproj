@@ -56,7 +56,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="HistoryMessageTimes.cs" />
+    <Compile Include="NewPoisson.cs" />
+    <Compile Include="OnRequest.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="PersonRequest.cs" />
     <Compile Include="PoissonRandom.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

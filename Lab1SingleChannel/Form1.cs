@@ -17,8 +17,16 @@ namespace Lab1SingleChannel
             InitializeComponent();
             double accuracy = 0.01;
             int selection = (int)(9 / Math.Pow(4 * accuracy, 2));
-            ALOHA aloha = new ALOHA(10,History, CountMess, NewChart);
+            int countPerson =1;
+            ALOHA aloha = new ALOHA(countPerson, History, CountMess, NewChart);
             aloha.StartGeneration(selection, 0.9);
+            OnRequest onRequest = new OnRequest(countPerson, 0.1, History, CountMess, NewChart);
+            onRequest.StartGeneration(selection);
+        }
+
+        private void NewChart_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

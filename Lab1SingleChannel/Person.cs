@@ -12,17 +12,19 @@ namespace Lab1SingleChannel
         private QueueMessageTime _queueTime;
         private double _l;
         private PoissonRandom Poisson;
+       // private NewPoisson Poisson;
         private static Random _rand;
         private readonly int M;
 
         private List<double> _countMessageWin = new List<double>();
 
         public double _p;
-        public Person(double l, double p, int m, Random random) {
+        public Person(double l, int m, Random random, double p = 0.5) {
             _l = l/m;
             _p = p;
             M = m;
              Poisson = new PoissonRandom(_l);
+           // Poisson = new NewPoisson(l, 1.0);
             _queueTime = new QueueMessageTime();
             _history = new HistoryMessageTimes();
             _rand = random;
