@@ -74,9 +74,8 @@ namespace Lab1SingleChannel
         public double generate(int k, double t)
         {
             return
-                (double)(((double)Math.Pow(lambda, k) * 
-                (double)Math.Pow(t, k)) /(double) factorial(k))
-                * (double)Math.Exp(-lambda * t);
+                (double)(((double)Math.Pow(lambda, k) * (double)Math.Pow(t, k)) /(double) factorial(k))
+                * Math.Pow(Math.E,(-lambda * t));
         }
 
         private double factorial(int x)

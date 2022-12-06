@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
-
 namespace Lab1SingleChannel
 {
     public class ALOHA

@@ -60,6 +60,7 @@
     <Compile Include="OnRequest.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonRequest.cs" />
+    <Compile Include="PoissonEvaluator.cs" />
     <Compile Include="PoissonRandom.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
