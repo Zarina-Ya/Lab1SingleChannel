@@ -17,11 +17,18 @@ namespace Lab1SingleChannel
             InitializeComponent();
             double accuracy = 0.01;
             int selection = (int)(9 / Math.Pow(4 * accuracy, 2));
-            int countPerson =10;
+            int countPerson = 10;
             ALOHA aloha = new ALOHA(countPerson, History, CountMess, NewChart);
             aloha.StartGeneration(selection, 0.9);
-            OnRequest onRequest = new OnRequest(countPerson, 0.1, History, CountMess, NewChart);
-            onRequest.StartGeneration(selection);
+            OnRequest onRequest = new OnRequest(countPerson, 0.2, History, CountMess, NewChart);
+            onRequest.StartGeneration(100);
+            //PoissonRandom random = new PoissonRandom(1.0, 10, 0.8);
+            //var sum = 0.0;
+            //for(int i = 0; i < 10000; i++)
+            //{
+            //    sum += random.NextTao();
+            //}
+            //Console.WriteLine(sum / 10000);
         }
 
         private void NewChart_Click(object sender, EventArgs e)

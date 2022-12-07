@@ -23,7 +23,7 @@ namespace Lab1SingleChannel
             _l = l/m;
             _p = p;
             M = m;
-             Poisson = new PoissonRandom(_l);
+             Poisson = new PoissonRandom(_l, Guid.NewGuid().GetHashCode(), 1.0);
            // Poisson = new NewPoisson(l, 1.0);
             _queueTime = new QueueMessageTime();
             _history = new HistoryMessageTimes();

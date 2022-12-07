@@ -101,7 +101,7 @@ namespace Lab1SingleChannel
             while( l < _lkr)
             {
                 CreatePerson(l);
-                GenerateMessageAllPersonsWin();
+               // GenerateMessageAllPersonsWin();
                 for (int i = 0; i < countWin; i++)
                 {
                     SendRequestToPerson(i % _peoples.Count);

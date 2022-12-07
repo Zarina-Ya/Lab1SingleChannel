@@ -11,8 +11,8 @@ namespace Lab1SingleChannel
         private HistoryMessageTimes _history;
         private QueueMessageTime _queueTime;
         private double _l;
-        private NewPoisson Poisson;
-        //private PoissonRandom Poisson;
+        //private NewPoisson Poisson;
+        private PoissonRandom Poisson;
         private Random _random;
         private readonly double _tao;
         private List<double> _countMessageWin = new List<double>();
@@ -35,7 +35,8 @@ namespace Lab1SingleChannel
             _l = l / m;
             _random = rand;
             _tao = tao;
-            Poisson = new NewPoisson(_l, tao);
+            //Poisson = new NewPoisson(_l, tao);
+            Poisson = new PoissonRandom(_l, Guid.NewGuid().GetHashCode(), _tao);
             //Poisson = new PoissonRandom(_l);
             _queueTime = new QueueMessageTime();
             _history = new HistoryMessageTimes();
@@ -58,9 +59,9 @@ namespace Lab1SingleChannel
         public void GenerateMessage(bool isWin)
         {
             if (isWin)
-                _queueTime.AddToQueuePeople(Poisson.next(), _random);
+                _queueTime.AddToQueuePeople(Poisson.Next(), _random);
             else
-                _queueTime.AddToQueuePeople(Poisson.nextTao(), _random, tao: _tao);
+                _queueTime.AddToQueuePeople(Poisson.NextTao(), _random, tao: _tao);
         }
 
         public double GetArithmeticMeanCountMessage()
